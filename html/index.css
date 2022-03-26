@@ -1,0 +1,150 @@
+
+* {
+  font-family: chatfont;
+  font-size: 1.02rem;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+	font-family: Frank;
+	src: url('./franklin.ttf');
+}
+
+@font-face {
+  font-family: chatfont;
+  src: url(./RockfordSans-Light.ttf);
+}
+
+#app {
+  font-family: chatfont;
+  /* font-weight: bold; */
+  color: white;
+}
+
+.chat-window {
+  font-family: chatfont;
+  /* font-weight: bold; */
+  text-shadow: 1px 1px #000000;
+  position: absolute;
+  top: 1.5%;
+  left: 0.8%;
+  width: 30%;
+  height: 29%;
+  max-width: 1000px;
+  border-radius: 5px; 
+}
+
+.messagebox{
+  padding: 0px;
+  margin-bottom: 0px;
+  width: fit-content;
+}
+
+.message {
+  margin-left: 5px;
+  color: white;
+
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to { opacity: 1 }
+}
+
+
+.chat-messages {
+  font-family: chatfont;
+  /* font-weight: bold; */
+  position: relative;
+  height: 95%;
+  font-size: 1.62vh;
+  margin: 0.2%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.chat-input {
+  font-family: chatfont;
+  /* font-weight: bold; */
+  font-size: 1.65vh;
+  position: absolute;
+  border-radius: 5px; 
+  top: 30%;
+  left: 0.8%;
+  width: 38%;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+.prefix {
+  font-family: chatfont;
+  font-weight: bold;
+  font-size: 1.8vh;
+  position: absolute;
+  margin-top: 0.7%;
+  left: 0.208%;
+}
+
+textarea {
+  font-family: chatfont;
+  font-size: 1.50vh;
+  display: block;
+  box-sizing: border-box;
+  padding: 1%;
+  padding-left: 3.5%;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 1px 1px 10px 1px #000000;
+  width: 80%;
+  border-width: 0;
+  height: 2.15%;
+}
+
+#name2{
+  font-family: Frank;
+  font-size: 1.60vh;
+  padding: 2px;
+  color: black;
+  background-color: white;
+  box-shadow: 1px 1px 10px 1px #ffffff;
+  width: 94px;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.multiline {
+  font-family: chatfont;
+  white-space: pre-line;
+}
+
+.suggestions {
+  font-family: chatfont;
+  list-style-type: none;
+  padding: 10px;
+  padding-left: 5px;
+  font-size: 1.50vh;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.63);
+  box-shadow: 1px 1px 10px 1px #000000;
+  width: 80%;
+}
+
+.suggestion {
+  margin-bottom: 0.5%;
+}
+
+.hidden {
+  display: none;
+}
