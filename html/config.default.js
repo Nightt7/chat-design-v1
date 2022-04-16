@@ -12,8 +12,8 @@ window.CONFIG = {
   fadeTimeout: 7000,
   suggestionLimit: 5,
   style: {
-    background: 'rgba(52, 73, 94, 0.2)',
-    width: '38%',
+    background: 'rgba(0, 0, 0, 0)',
+    width: '28%',
     height: '22%',
   }
 };

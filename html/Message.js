@@ -26,30 +26,15 @@ Vue.component('message', {
         }
         return argEscaped;
       });
-      s = this.colorize(s);
-      return this.makeBox(s);
+      return this.colorize(s);
     },
   },
   methods: {
-    makeBox(str){
-      if(this.color)
-      {
-        return `<div class="messagebox" style="color: rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]},1)">${str}</div>`
-        //return `<div class="messagebox" style="background-color: rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, 0.80)">${str}</div>`
-        //return `<div class="messagebox" style="background-color: rgba(255, 0, 0, 0.85)">${str}</div>`
-      }
-      else
-      {
-        return `<div class="messagebox" style="background-color: rgba(255, 0, 0, 0.00)">${str}</div>`
-      }
-    },
     colorizeOld(str) {
-      return str;
-      //return `<span style="color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})">${str}</span>`
+      return `<span style="color: rgb(${this.color[0]}, ${this.color[1]}, ${this.color[2]})">${str}</span>`
     },
     colorize(str) {
       let s = "<span>" + (str.replace(/\^([0-9])/g, (str, color) => `</span><span class="color-${color}">`)) + "</span>";
-      // let s = "<span>" + (str.replace(/\^([0-9])/g, (str, color) => `</span><span>`)) + "</span>";
 
       const styleDict = {
         '*': 'font-weight: bold;',
@@ -94,10 +79,6 @@ Vue.component('message', {
       default: false,
     },
     color: { //deprecated
-      type: Array,
-      default: false,
-    },
-    bgcolor: { //deprecated
       type: Array,
       default: false,
     },

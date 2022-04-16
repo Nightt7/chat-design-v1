@@ -37,8 +37,6 @@ window.APP = {
         clearTimeout(this.showWindowTimer);
       }
       this.showWindow = true;
-      document.getElementById('img_alerta').classList.add('imgalertalow');
-
       this.resetShowWindowTimer();
 
       const messagesObj = this.$refs.messages;
@@ -59,8 +57,6 @@ window.APP = {
     ON_OPEN() {
       this.showInput = true;
       this.showWindow = true;
-      document.getElementById('img_alerta').classList.add('imgalertalow');
-
       if (this.showWindowTimer) {
         clearTimeout(this.showWindowTimer);
       }
@@ -73,15 +69,7 @@ window.APP = {
       }, 100);
     },
     ON_MESSAGE({ message }) {
-      if(message.args == '')
-      {
-       // window.console.log('chat message:' +  JSON.stringify(message));
-      }
-      else
-      {
-       // window.console.log('chat message:' +  JSON.stringify(message));
-        this.messages.push(message);
-      }
+      this.messages.push(message);
     },
     ON_CLEAR() {
       this.messages = [];
@@ -89,16 +77,11 @@ window.APP = {
       this.oldMessagesIndex = -1;
     },
     ON_SUGGESTION_ADD({ suggestion }) {
-      const duplicateSuggestion = this.backingSuggestions.find(a => a.name == suggestion.name);
-      if (duplicateSuggestion) {
-        if(suggestion.help || suggestion.params) {
-          duplicateSuggestion.help = suggestion.help || "";
-          duplicateSuggestion.params = suggestion.params || [];
-        }
-        return;
-      }
       if (!suggestion.params) {
         suggestion.params = []; //TODO Move somewhere else
+      }
+      if (this.backingSuggestions.find(a => a.name == suggestion.name)) {
+        return;
       }
       this.backingSuggestions.push(suggestion);
     },
@@ -118,26 +101,6 @@ window.APP = {
       this.removeThemes();
 
       this.setThemes(themes);
-    },
-    SetAlerta({nivelAlerta})
-    {
-      document.getElementById('img_alerta').src = 'alerta' + nivelAlerta + '.png';
-      document.getElementById('alerta').style.display = 'inline';
-    },
-    HideAlerta()
-    {
-      document.getElementById('alerta').style.display = 'none';
-    },
-    AlertaTransparent({value})
-    {
-      if(value)
-      {
-        document.getElementById('alerta').style.display = 'none';
-      }
-      else
-      {
-        document.getElementById('alerta').style.display = 'inline';
-      }
     },
     removeThemes() {
       for (let i = 0; i < document.styleSheets.length; i++) {
@@ -227,8 +190,6 @@ window.APP = {
       this.showWindowTimer = setTimeout(() => {
         if (!this.showInput) {
           this.showWindow = false;
-          document.getElementById('img_alerta').classList.remove('imgalertalow');
-
         }
       }, CONFIG.fadeTimeout);
     },

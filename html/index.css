@@ -1,7 +1,7 @@
 
 * {
   font-family: chatfont;
-  font-size: 1.02rem;
+  font-size: 1.40vh;
   margin: 0;
   padding: 0;
 }
@@ -18,21 +18,19 @@
 
 #app {
   font-family: chatfont;
-  /* font-weight: bold; */
   color: white;
 }
 
 .chat-window {
-  font-family: chatfont;
-  /* font-weight: bold; */
-  text-shadow: 1px 1px #000000;
   position: absolute;
-  top: 1.5%;
-  left: 0.8%;
-  width: 30%;
-  height: 29%;
+  top: 3.5%;
+  left: 0.25%;
+  width: 22%;
+  height: 15%;
   max-width: 1000px;
-  border-radius: 5px; 
+  background-color: rgba(0, 0, 0, 0.0);
+  text-shadow: 1px 1px black;
+  -webkit-animation-duration: 2s;
 }
 
 .messagebox{
@@ -47,26 +45,12 @@
 
 }
 
-@-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes fadeInBottom {
-    from {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-    to { opacity: 1 }
-}
-
-
 .chat-messages {
   font-family: chatfont;
   /* font-weight: bold; */
   position: relative;
   height: 95%;
-  font-size: 1.62vh;
+  font-size: 1.40vh;
   margin: 0.2%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -75,7 +59,7 @@
 .chat-input {
   font-family: chatfont;
   /* font-weight: bold; */
-  font-size: 1.65vh;
+  font-size: 1.40vh;
   position: absolute;
   border-radius: 5px; 
   top: 30%;
@@ -83,6 +67,8 @@
   width: 38%;
   max-width: 1000px;
   box-sizing: border-box;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .prefix {
@@ -94,29 +80,38 @@
   left: 0.208%;
 }
 
+#speed-icon{
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  margin-top: 0.7%;
+  left: 0.600%;
+}
+
 textarea {
   font-family: chatfont;
-  font-size: 1.50vh;
-  display: block;
+  font-size: 1.40vh;
   box-sizing: border-box;
   padding: 1%;
   padding-left: 3.5%;
   color: white;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px 1px 10px 1px #000000;
+  background-color: rgba(0, 0, 0, 0.63);
+  box-shadow: 0px 0px 10px #000000;
   width: 80%;
   border-width: 0;
-  height: 2.15%;
+  height: 21.04%;
+  resize: none;
 }
 
 #name2{
   font-family: Frank;
-  font-size: 1.60vh;
+  font-size: 1.40vh;
   padding: 2px;
+  padding-left: 25px;
   color: black;
   background-color: white;
-  box-shadow: 1px 1px 10px 1px #ffffff;
-  width: 94px;
+  box-shadow: 0px 0px 10px #ffffff;
+  width: 83px;
 }
 
 textarea:focus, input:focus {
@@ -132,13 +127,16 @@ textarea:focus, input:focus {
   font-family: chatfont;
   list-style-type: none;
   padding: 10px;
-  padding-left: 5px;
-  font-size: 1.50vh;
+  margin-top : .2vw;
+  font-size: 1.40vh;
   box-sizing: border-box;
   color: white;
   background-color: rgba(0, 0, 0, 0.63);
   box-shadow: 1px 1px 10px 1px #000000;
+  overflow: hidden;
   width: 80%;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .suggestion {

@@ -2,7 +2,8 @@ local chatInputActive = false
 local chatInputActivating = false
 local chatHidden = true
 local chatLoaded = false
-
+s = 100
+_s = 2000
 RegisterNetEvent('chatMessage')
 RegisterNetEvent('chat:addTemplate')
 RegisterNetEvent('chat:addMessage')
@@ -10,24 +11,11 @@ RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
 RegisterNetEvent('chat:clear')
-ESX = nil
-Citizen.CreateThread(function()
-		while ESX == nil do
-			TriggerEvent("esx:getSharedObject",function(obj)
-					ESX = obj
-      end)
-			Citizen.Wait(0)
-      PlayerData = ESX.GetPlayerData()
-	--  TriggerEvent("sharingan_alerta:questalerta")
-		end
-  
-end)
-
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
 
-RegisterNetEvent('sharingan_chat:messageEntered')
+RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
@@ -59,7 +47,6 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
 end)
 
 AddEventHandler('chat:addMessage', function(message)
- message.bgcolor = message.color
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = message
@@ -109,6 +96,8 @@ AddEventHandler('chat:clear', function(name)
   })
 end)
 
+
+
 RegisterNUICallback('chatResult', function(data, cb)
   chatInputActive = false
   SetNuiFocus(false)
@@ -122,7 +111,7 @@ RegisterNUICallback('chatResult', function(data, cb)
     if data.message:sub(1, 1) == '/' then
       ExecuteCommand(data.message:sub(2))
     else
-      TriggerServerEvent('sharingan_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
+      TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
     end
   end
 
@@ -176,14 +165,14 @@ local function refreshThemes()
 end
 
 AddEventHandler('onClientResourceStart', function(resName)
-  Wait(500)
--- TriggerEvent("sharingan_alerta:questalerta")
+  Wait(_s)
+
   refreshCommands()
   refreshThemes()
 end)
 
 AddEventHandler('onClientResourceStop', function(resName)
-  Wait(500)
+  Wait(_s)
 
   refreshCommands()
   refreshThemes()
@@ -201,11 +190,23 @@ RegisterNUICallback('loaded', function(data, cb)
 end)
 
 Citizen.CreateThread(function()
+    while true do
+        for id = 0, 255 do
+            if GetPlayerPed(-1) then
+                x1, y1, z1 = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
+                distance = math.floor(GetDistanceBetweenCoords(x1,  y1,  z1,  x2,  y2,  z2,  true))
+            end
+        end
+        Citizen.Wait(1000)
+    end
+end)
+
+Citizen.CreateThread(function()
   SetTextChatEnabled(false)
   SetNuiFocus(false)
 
   while true do
-    Wait(0)
+    Wait(s)
 
     if not chatInputActive then
       if IsControlPressed(0, 245) --[[ INPUT_MP_TEXT_CHAT_ALL ]] then
@@ -245,28 +246,18 @@ Citizen.CreateThread(function()
   end
 end)
 
--- RegisterNetEvent('sharingan_alerta:questalerta')
--- AddEventHandler('sharingan_alerta:questalerta', function()
---     ESX.TriggerServerCallback("sharingan_alerta:questAlert",function(alerta)
-
---       TriggerEvent("sharingan_alerta:setalerta", alerta)
-
---     end)
-
--- end)
-
--- RegisterNetEvent('sharingan_alerta:setalerta')
--- AddEventHandler('sharingan_alerta:setalerta', function(nivelAlerta)
---   SendNUIMessage({
---     type = 'SetAlerta',
---     nivelAlerta = nivelAlerta
---   })
--- end)
-
--- RegisterNetEvent('sharingan_alerta:alertatrans')
--- AddEventHandler('sharingan_alerta:alertatrans', function(value)
---     SendNUIMessage({
---       type = 'AlertaTransparent',
---       value = value
--- 		})
--- end)
+function AderNotify(x, y, z, text)
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+    local factor = #text / 370
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    
+    SetTextScale(0.35, 0.35)
+    SetTextFont(0)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(1)
+    AddTextComponentString(text)
+    DrawText(_x,_y)
+    DrawRect(_x,_y + 0.0125, 0.060 + factor, 0.035, 0, 0, 0, 190)
+end

@@ -1,20 +1,29 @@
-fx_version 'adamant'
+fx_version'adamant'
 
 game 'gta5'
 
-author 'Chat Design Modificated by Nightt#8899'
+description 'Chat Design Modificated by Nightt#8899'
 
-client_scripts {
-    'cl_chat.lua'
-}
-server_scripts {
-    'sv_chat.lua'
-}
+author 'Nightt#8899'
+
+ui_page 'html/index.html'
+
+client_script 'cl_chat.lua'
+
+server_script 'sv_chat.lua'
 
 files {
-    '**/**/**/**/**/*.*'
-}
-
-ui_page {
-    'html/index.html'
-}
+    'html/index.html',
+    'html/index.css',
+    'html/config.default.js',
+    'html/config.js',
+    'html/App.js',
+    'html/Message.js',
+    'html/Suggestions.js',
+    'html/vendor/vue.2.3.3.min.js',
+    'html/vendor/flexboxgrid.6.3.1.min.css',
+    'html/vendor/animate.3.5.2.min.css',
+    'html/vendor/latofonts.css',
+    'html/franklin.ttf',
+    'html/RockfordSans-Light.ttf',
+  }
