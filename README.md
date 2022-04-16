@@ -5,8 +5,8 @@ FiveM ESX Chat design by Nightt#8899
 - | Discord: https://discord.gg/Suh7hfwwXV
 - | Preview: 
 
-![image](https://user-images.githubusercontent.com/101990128/160261034-e51b9e93-3e83-4061-97bf-fc705cf76af5.png)
-![image](https://user-images.githubusercontent.com/101990128/160261036-3e704f51-8dd6-466b-937e-3e549c171022.png)
+![image](https://user-images.githubusercontent.com/101990128/163678880-a0cc3013-586e-4ad1-9c71-4c7e84253b15.png)
+![image](https://user-images.githubusercontent.com/101990128/163678884-425babbe-2044-4d98-aa3b-58d80cd16b0f.png)
 
 
 - Espero que os guste, disfrutadlo :)
